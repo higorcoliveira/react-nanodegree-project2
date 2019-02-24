@@ -6,7 +6,7 @@ import { handleInitialData } from './actions/shared'
 class App extends Component {
   componentDidMount() {
     const { dispatch } = this.props
-    console.log(dispatch(handleInitialData()))
+    dispatch(handleInitialData())
   }
 
   render() {
