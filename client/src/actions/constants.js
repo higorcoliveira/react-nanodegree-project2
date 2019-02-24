@@ -1,0 +1,10 @@
+// POSTS
+const GET_POSTS = 'GET_POSTS'
+
+// CATEGORIES
+const GET_CATEGORIES = 'GET_CATEGORIES'
+
+module.exports = {
+    GET_POSTS,
+    GET_CATEGORIES
+}
