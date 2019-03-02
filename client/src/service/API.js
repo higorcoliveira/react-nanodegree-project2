@@ -20,6 +20,7 @@ export const getInitialData = () => {
 export const getAllCategories = () => {
     return fetch(`${api}/categories`, { headers })
         .then(res => res.json())
+        .then(data => data.categories)
 }
 
 export const getPostsByCategory = (categoryId) => {

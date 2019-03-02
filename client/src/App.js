@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { handleInitialData } from './actions/shared'
+import Dashboard from './components/Dashboard'
 
 class App extends Component {
   componentDidMount() {
@@ -10,16 +11,25 @@ class App extends Component {
   }
 
   render() {
+    const { loading } = this.props
     return (
       <div className="App">
-        HELLO WORLD
+        {loading === true
+          ? null
+          : <Dashboard />
+        }
       </div>
     );
   }
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired
 }
 
-export default connect()(App);
+const mapStateToProps = ({ categories, posts }) => ({
+  loading: categories == null && posts === null,
+})
+
+export default connect(mapStateToProps)(App);
