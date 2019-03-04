@@ -11,25 +11,16 @@ class App extends Component {
   }
 
   render() {
-    const { loading } = this.props
     return (
       <div className="App">
-        {loading === true
-          ? null
-          : <Dashboard />
-        }
+        <Dashboard />
       </div>
     );
   }
 }
 
 App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired
+  dispatch: PropTypes.func.isRequired
 }
 
-const mapStateToProps = ({ categories, posts }) => ({
-  loading: categories == null && posts === null,
-})
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

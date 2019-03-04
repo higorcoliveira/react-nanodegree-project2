@@ -1,11 +1,17 @@
 import { GET_POSTS } from '../actions/constants'
 
-export default function posts (state = {}, action) {
+const initialState = {
+    data: [],
+    status: 'loading',
+}
+
+export default function posts (state = initialState, action) {
     switch(action.type) {
         case GET_POSTS:
             return {
                 ...state,
-                ...action.posts
+                status: 'loaded', 
+                data: action.posts,
             }
         default:
             return state

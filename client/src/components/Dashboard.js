@@ -5,22 +5,28 @@ import PropTypes from 'prop-types'
 const Dashboard = props => {
     const { categories, posts } = props
     console.dir(categories)
-    console.dir(posts)
+    // console.dir(posts)
+
+    if (props.posts.status === 'loading' 
+      && props.categories.status === 'loading') {
+      return <div>Loading...</div>
+    }
+
     return (
       <div>
         <h3>Leitura</h3>
         <div>
-          {/* {categories.map((name) => (
-            <div key={name}>{name}</div>
+          {categories.data.map((item) => (
+            <div key={item.name}>{item.name}</div>
           ))
-          } */}
+          }
         </div>
         <ul>
-          {/* {posts.map((id) => (
-            <li key={id}>
-              <div>POST ID: {id}</div>
+          {posts.data.map((item) => (
+            <li key={item.id}>
+              <div>POST ID: {item.id}</div>
             </li>
-          ))} */}
+          ))}
         </ul>
       </div>
     )
