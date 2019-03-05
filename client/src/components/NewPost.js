@@ -11,8 +11,6 @@ class NewPost extends Component {
    }
    
    createPost = post => {
-      console.log("NEW POST");
-      console.dir(post);
       const { dispatch } = this.props
       dispatch(handleCreatePost(post))
       this.setState({ redirect: true });

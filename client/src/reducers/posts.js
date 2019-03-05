@@ -15,11 +15,11 @@ export default function posts (state = initialState, action) {
             }
         case CREATE_POST: {
             const { post } = action
-            console.log("REDUCER")
-            console.dir(post)  
+            const newPosts = state.data
+            newPosts.push(post)
             return {
                 ...state,
-                [action.post.id]: action.post
+                data: newPosts
             }
         }
         default:

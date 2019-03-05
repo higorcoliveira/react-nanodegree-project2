@@ -1,6 +1,6 @@
 const api = "http://localhost:3001"
 // alterar o valor do token para reiniciar os dados do backend
-let token = "higorcoliveira:555144444"
+let token = "higorcoliveira:555113351qq24"
 
 const headers = {
     'Accept': 'application/json',
@@ -36,12 +36,10 @@ export const getAllPosts = () => {
 }
 
 export const addPost = (post) => {
-    console.log("BACKEND")
-    console.dir(post)
     return fetch(`${api}/posts`, {
             method: 'POST',
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ post })
+            body: JSON.stringify(post)
     }).then(res => res.json())
 }
 
