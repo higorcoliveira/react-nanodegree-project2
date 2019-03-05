@@ -2,38 +2,30 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PostList from './PostList'
+import CategoryFilter from './CategoryFilter'
 
 const Dashboard = props => {
-    const { categories, posts } = props
+    const { posts } = props
 
-    if (props.posts.status === 'loading' 
-      && props.categories.status === 'loading') {
+    if (posts.status === 'loading') {
       return <div>Loading...</div>
     }
 
     return (
       <div>
         <h3>Leitura</h3>
-        {/* TODO componente de filtragem de posts por categoria */}
-        <div>
-          {categories.data.map((item) => (
-            <div key={item.name}>{item.name}</div>
-          ))
-          }
-        </div>
+        <CategoryFilter />
         <PostList posts={posts} />
       </div>
     )
 }
 
 // TODO colocar ordenação de post (byScore)
-const mapStateToProps = ({ categories, posts }) => ({
-    categories,
+const mapStateToProps = ({ posts }) => ({
     posts: posts.data.sort((a, b) => {return a.timestamp - b.timestamp})
 })
 
 Dashboard.propTypes = {
-    categories: PropTypes.instanceOf(Object).isRequired,
     posts: PropTypes.instanceOf(Array).isRequired
 }
 

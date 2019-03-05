@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom';
 import { handleInitialData } from './actions/shared'
 import Dashboard from './components/Dashboard'
+import PostsByCategory from './components/PostsByCategory'
 
 class App extends Component {
   componentDidMount() {
@@ -12,9 +14,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Dashboard />
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Route exact path="/" component={Dashboard} />
+          <Route exact path="/:category" component={PostsByCategory} />
+        </div>
+      </BrowserRouter>
     );
   }
 }

@@ -6,7 +6,7 @@ const PostList = props => {
     const { posts } = props
     const postsToRender = posts.length > 0 
         ? posts.map(post => <Post key={post.id} id={post.id} />)
-        : <div />;
+        : <div>Não há posts nessa categoria...</div>;
     return (
       <div>
         <div>

@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import * as API from '../service/API'
 import getCategories from './categories'
-import getPosts from './posts'
+import { getPosts } from './posts'
 
 export function handleInitialData() {
     return (dispatch) => {
