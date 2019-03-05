@@ -3,6 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import { capitalize } from '../util/Util'
 
 const CategoryFilter = props => {
 
@@ -18,7 +19,7 @@ const CategoryFilter = props => {
             key={category.name}
             style={{width: '100px'}}
           >
-            {category.name.toUpperCase()}&nbsp;
+            {capitalize(category.name)}&nbsp;
           </Link>
         ))}
       </div>

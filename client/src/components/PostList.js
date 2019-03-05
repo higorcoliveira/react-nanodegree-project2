@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 import Post from './Post'
 
 const PostList = props => {
     const { posts } = props
     const postsToRender = posts.length > 0 
         ? posts.map(post => <Post key={post.id} id={post.id} />)
-        : <div>Não há posts nessa categoria...</div>;
+        : <div />
     return (
       <div>
         <div>
-          {/* TODO Colocar rota no botão para novo post */}
-          <button type="button">Nova Postagem</button>
+          <Link to="/new">Nova Postagem</Link>
         </div>
         <div>
           {/* TODO Colocar componente de ordenação */}

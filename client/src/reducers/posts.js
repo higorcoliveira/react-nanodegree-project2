@@ -1,4 +1,4 @@
-import { GET_POSTS } from '../actions/constants'
+import { GET_POSTS, CREATE_POST } from '../actions/constants'
 
 const initialState = {
     data: [],
@@ -13,6 +13,15 @@ export default function posts (state = initialState, action) {
                 status: 'loaded', 
                 data: action.posts,
             }
+        case CREATE_POST: {
+            const { post } = action
+            console.log("REDUCER")
+            console.dir(post)  
+            return {
+                ...state,
+                [action.post.id]: action.post
+            }
+        }
         default:
             return state
     }
