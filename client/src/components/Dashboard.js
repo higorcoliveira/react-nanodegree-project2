@@ -31,7 +31,7 @@ class Dashboard extends Component {
 
 // TODO colocar ordenação de post (byScore)
 const mapStateToProps = ({ posts }) => ({
-    posts: posts.data.sort((a, b) => {return a.timestamp - b.timestamp})
+    posts: posts.data.sort((a, b) => {return b.timestamp - a.timestamp})
 })
 
 Dashboard.propTypes = {

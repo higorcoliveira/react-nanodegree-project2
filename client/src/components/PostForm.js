@@ -11,19 +11,20 @@ class PostForm extends Component {
       category: 'react',
       title: '',
       body: '',
-      author: '',
+      author: ''
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   const { category, title, body, author } = nextProps.post;
-  //   this.setState({
-  //     category,
-  //     title,
-  //     body,
-  //     author,
-  //   })
-  // }
+  componentDidMount() {
+    const { post } = this.props
+    const { category, title, body, author } = post;
+    this.setState({
+      category,
+      title,
+      body,
+      author
+    })
+  }
 
   onSubmit = e => {
     e.preventDefault()

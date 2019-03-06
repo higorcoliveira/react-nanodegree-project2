@@ -3,7 +3,9 @@ import React, { Component } from 'react'
 import ShowMore from 'react-show-more'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 import dateFormat from '../util/Util'
+import { handleDeletePost } from '../actions/posts'
 
 class Post extends Component {
   
@@ -16,27 +18,31 @@ class Post extends Component {
   }
 
   deletePost = () => {
-    // TODO remover post
+    const { dispatch, post } = this.props
+    dispatch(handleDeletePost(post.id))
   }
 
   render() {
     const { post } = this.props;
-    const { title, author, body, timestamp, commentCount } = post
+    const { id, title, author, body, timestamp, commentCount } = post
 
     return (
       <li>
         <div>
           <div>
-            {/* TODO colocar navegação para a página do post */}
+            {/* TODO colocar navegação para a página de detalhes do post */}
             { title }
           </div>
           <button type="button" onClick={this.deletePost}>Apagar</button>
+          <Link to={`/posts/${id}`}>
+            Editar
+          </Link>
         </div>
         <div>
           <small>Postado por {author}</small>
         </div>
         <div>
-          <ShowMore lines={5} more="Expandir" less="Recolher">{body}</ShowMore>
+          <ShowMore lines={30} more="Expandir" less="Recolher">{body}</ShowMore>
         </div>
         <div>
           <div>
@@ -59,7 +65,8 @@ const mapStateToProps = ({ posts }, { id }) => {
 }
 
 Post.propTypes = {
-    post: PropTypes.instanceOf(Object).isRequired
+    post: PropTypes.instanceOf(Object).isRequired,
+    dispatch: PropTypes.func.isRequired
 }
 
 export default connect(mapStateToProps)(Post)

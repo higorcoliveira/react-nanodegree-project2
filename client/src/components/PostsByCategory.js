@@ -18,7 +18,7 @@ const PostsByCategory = props => {
 
 const mapStateToProps = ({ posts }, ownProps) => ({
     posts: posts.data
-      .sort((a, b) => {return a.timestamp - b.timestamp})
+      .sort((a, b) => {return b.timestamp - a.timestamp})
       .filter(post => post.category === ownProps.match.params.category)
 })
 
