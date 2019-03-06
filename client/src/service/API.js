@@ -52,7 +52,7 @@ export const ratePost = (postId, rate) => {
     return fetch(`${api}/posts/${postId}`, {
             method: 'POST',
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ rate })
+            body: JSON.stringify(rate)
     }).then(res => res.json())    
 }
 

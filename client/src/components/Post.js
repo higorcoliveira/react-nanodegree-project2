@@ -5,16 +5,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import dateFormat from '../util/Util'
-import { handleDeletePost } from '../actions/posts'
+import { handleDeletePost, handleRatePost } from '../actions/posts'
+import { THUMBS_UP, THUMBS_DOWN } from '../util/constants'
 
 class Post extends Component {
   
   thumbsUp = () => {
-      // TODO classificar post
+    const { dispatch, post } = this.props
+    dispatch(handleRatePost(post.id, { option: THUMBS_UP }))
   }
 
   thumbsDown = () => {
-    // TODO classificar post
+    const { dispatch, post } = this.props
+    dispatch(handleRatePost(post.id, { option: THUMBS_DOWN }))
   }
 
   deletePost = () => {
@@ -30,11 +33,12 @@ class Post extends Component {
       <li>
         <div>
           <div>
-            {/* TODO colocar navegação para a página de detalhes do post */}
-            { title }
+            <Link to={`/posts/${id}/view`}>
+              { title }
+            </Link>            
           </div>
           <button type="button" onClick={this.deletePost}>Apagar</button>
-          <Link to={`/posts/${id}`}>
+          <Link to={`/posts/${id}/edit`}>
             Editar
           </Link>
         </div>

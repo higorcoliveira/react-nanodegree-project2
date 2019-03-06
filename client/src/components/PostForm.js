@@ -42,8 +42,6 @@ class PostForm extends Component {
   }
 
   handleChange = (e, key) => {
-    // console.log("Campo: " + key)
-    // console.log("Valor: " + e.target.value)
     this.setState({
       [key]: e.target.value,
     })

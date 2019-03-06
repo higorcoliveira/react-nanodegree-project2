@@ -1,24 +1,44 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import Post from './Post'
+import SortBy from './SortBy'
+import { BY_DATE } from '../util/constants'
+import { getSortedPosts } from '../util/Util'
 
-const PostList = props => {
-    const { posts } = props
-    const postsToRender = posts.length > 0 
-        ? posts.map(post => <Post key={post.id} id={post.id} />)
-        : <div />
-    return (
-      <div>
+class PostList extends Component {
+
+    constructor(props) {
+      super(props)
+      this.state = {
+        sortBy: BY_DATE
+      }
+    }
+    changeSortBy = e => {
+      this.setState({
+        sortBy: e.target.value
+      })      
+    }
+
+    render() {
+      const { posts } = this.props
+      const { sortBy } = this.state
+      const postsSorted = getSortedPosts(posts, sortBy)
+      const postsToRender = postsSorted.length > 0 
+          ? postsSorted.map(item => <Post key={item.id} id={item.id} />)
+          : <div />
+      return (
         <div>
-          <Link to="/new">Nova Postagem</Link>
+          <div>
+            <Link to="/new">Nova Postagem</Link>
+          </div>
+          <div>
+            <SortBy changeHandler={this.changeSortBy} sortBy={sortBy} />
+            <ul>{postsToRender}</ul>
+          </div>
         </div>
-        <div>
-          {/* TODO Colocar componente de ordenação */}
-          <ul>{postsToRender}</ul>
-        </div>
-      </div>
-    )
+      )
+    }
 }
 
 PostList.propTypes = {

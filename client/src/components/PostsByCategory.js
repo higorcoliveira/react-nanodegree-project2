@@ -5,8 +5,8 @@ import PostList from './PostList'
 import CategoryFilter from './CategoryFilter'
 
 const PostsByCategory = props => {
-    
     const { posts } = props
+
     return (
       <div>
         <h3>Leitura</h3>
@@ -18,7 +18,6 @@ const PostsByCategory = props => {
 
 const mapStateToProps = ({ posts }, ownProps) => ({
     posts: posts.data
-      .sort((a, b) => {return b.timestamp - a.timestamp})
       .filter(post => post.category === ownProps.match.params.category)
 })
 

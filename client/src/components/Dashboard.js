@@ -26,12 +26,11 @@ class Dashboard extends Component {
           <PostList posts={posts} />
         </div>
       )
-    }  
+    }
 }
 
-// TODO colocar ordenação de post (byScore)
 const mapStateToProps = ({ posts }) => ({
-    posts: posts.data.sort((a, b) => {return b.timestamp - a.timestamp})
+    posts: posts.data
 })
 
 Dashboard.propTypes = {

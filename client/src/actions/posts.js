@@ -52,3 +52,10 @@ export function handleDeletePost(postId) {
           .then((post) => dispatch(deletePost(post)))
     }
 }
+
+export function handleRatePost(postId, option) {
+    return (dispatch) => {
+        return API.ratePost(postId, option)
+          .then((post) => dispatch(editPost(post)))
+    }
+}
