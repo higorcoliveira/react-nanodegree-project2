@@ -14,6 +14,7 @@ class PostList extends Component {
         sortBy: BY_DATE
       }
     }
+    
     changeSortBy = e => {
       this.setState({
         sortBy: e.target.value
@@ -30,7 +31,7 @@ class PostList extends Component {
       return (
         <div>
           <div>
-            <Link to="/new">Nova Postagem</Link>
+            <Link to="/posts/new">Nova Postagem</Link>
           </div>
           <div>
             <SortBy changeHandler={this.changeSortBy} sortBy={sortBy} />

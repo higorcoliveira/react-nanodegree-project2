@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import PostForm from './PostForm'
-import CategoryFilter from './CategoryFilter'
 import { handleUpdatePost } from '../actions/posts'
 
 class EditPost extends Component {
@@ -27,8 +26,6 @@ class EditPost extends Component {
 
     return (
       <div>
-        <h3>Leitura</h3>
-        <CategoryFilter />
         <PostForm submitPost={this.updatePost} post={post[0]} isNew={false} />
       </div>
     )

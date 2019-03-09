@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import dateFormat from '../util/Util'
-import { handleDeletePost, handleRatePost } from '../actions/posts'
-import { THUMBS_UP, THUMBS_DOWN } from '../util/constants'
 import RateElement from './RateElement'
+import { THUMBS_UP, THUMBS_DOWN } from '../util/constants'
+import { handleDeletePost, handleRatePost } from '../actions/posts'
 
 class Post extends Component {
   

@@ -2,15 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import PostList from './PostList'
-import CategoryFilter from './CategoryFilter'
 
 const PostsByCategory = props => {
     const { posts } = props
 
     return (
       <div>
-        <h3>Leitura</h3>
-        <CategoryFilter />
         <PostList posts={posts} />
       </div>      
     )

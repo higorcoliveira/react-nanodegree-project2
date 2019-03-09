@@ -10,11 +10,11 @@ class NewPost extends Component {
       redirect: false
    }
    
-   createPost = post => {
-      const { dispatch } = this.props
-      dispatch(handleCreatePost(post))
-      this.setState({ redirect: true });
-   }
+  createPost = post => {
+    const { dispatch } = this.props
+    dispatch(handleCreatePost(post))
+    this.setState({ redirect: true });
+  }
 
   render() {
     const { redirect } = this.state

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import PostList from './PostList'
-import CategoryFilter from './CategoryFilter'
 import { handleInitialData } from '../actions/shared'
 
 class Dashboard extends Component {
@@ -21,8 +20,6 @@ class Dashboard extends Component {
       
       return (
         <div>
-          <h3>Leitura</h3>
-          <CategoryFilter />
           <PostList posts={posts} />
         </div>
       )
