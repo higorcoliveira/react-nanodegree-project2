@@ -27,9 +27,11 @@ class PostDetails extends Component {
     const { comments, match } = this.props
 
     return (
-      <div>
+      <div className="container">
         <Post key={match.params.postId} id={match.params.postId} />
+        <br />
         <CommentForm submitComment={this.addComment} isNew />
+        <br />
         <CommentList comments={comments} />
       </div>
     )

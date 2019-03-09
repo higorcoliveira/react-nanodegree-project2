@@ -13,7 +13,7 @@ const App = () => {
 
     return (
       <BrowserRouter>        
-        <div>
+        <section className="section">
           {/* para o componente notFound funcionar é preciso resolver o problema do estado 
             do redux estar sendo zerado quando é dado refresh na página */}
           <Header />
@@ -25,7 +25,7 @@ const App = () => {
             <Route exact path="/posts/:postId/view" component={PostDetails} />
             <Route exact path="/error/notfound" component={NotFound} />
           </Switch>
-        </div>
+        </section>
       </BrowserRouter>
     )
 }

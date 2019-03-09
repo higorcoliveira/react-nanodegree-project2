@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -7,11 +8,11 @@ const CategoryForm = props => {
     const { checkedValue, handleChange, categories } = props;
 
     return (
-      <div>
-        <div>Categorias</div>
-        <div>
+      <div className="field">
+        <h2 className="subtitle is-6">Categorias</h2>
+        <div className="control">
           {categories.map(category => (
-            <label key={category.name} htmlFor={category.name} style={{width: '80px'}}>
+            <label className="title is-6" key={category.name} htmlFor={category.name} style={{width: '80px'}}>
               <input
                 key={category.name}
                 type="radio"
@@ -20,7 +21,7 @@ const CategoryForm = props => {
                 checked={checkedValue === category.name}
                 onChange={e => handleChange(e, "category")}
               />
-              {capitalize(category.name)}
+              {capitalize(category.name)}&emsp;
             </label>
             ))}
         </div>

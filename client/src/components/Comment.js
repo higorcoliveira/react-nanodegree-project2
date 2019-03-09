@@ -50,31 +50,43 @@ class Comment extends Component {
     ? (<CommentEditForm existingValue={body} editComment={this.editComment} />)
     : (
       <div>          
-        <button type="button" onClick={this.deleteComment}>Apagar</button>
-        <div>
+        <button 
+          className="button is-danger is-outlined"
+          type="button" 
+          onClick={this.deleteComment}
+        >
+          <span className="icon is-small">
+            <i className="fas fa-times" />
+          </span>
+        </button>
+        <button
+          className="button is-info is-outlined"
+          type="button" 
+          onClick={this.toogleEdit}
+        >
+          <span className="icon is-small">
+            <i className="fas fa-pencil-alt fa-fw" />
+          </span>
+        </button>
+        <div className="content">
           {body}&nbsp;
-          <button type="button" onClick={this.toogleEdit}>
-            Editar
-          </button>
         </div>
       </div>
     )
     
     return (
       <li>
-        {renderCommentBody}
-        <div>
-          <small>Comentado por {author}</small>
-        </div>
-        <div>
-          <div>
-            <small>Data da publicação: {dateFormat(timestamp)}</small>
-            <div>              
-              <small>{voteScore} voto(s)</small>
-            </div>
+        <div className="card">
+          {renderCommentBody}
+          <div className="content">
+            <p className="subtitle is-7">Comentado por {author}</p>
           </div>
+          <div className="card-footer">
+            <time className="card-footer-item">{dateFormat(timestamp)}</time>
+            <small className="card-footer-item">{voteScore} voto(s)</small>
+          </div>      
           <RateElement thumbsUp={this.thumbsUp} thumbsDown={this.thumbsDown} />
-        </div>
+        </div>          
       </li>
     )
   }

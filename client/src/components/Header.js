@@ -3,10 +3,12 @@ import CategoryFilter from './CategoryFilter'
 
 const Header = () => {
     return (
-      <div>
-        <h3>Leitura</h3>
-        <CategoryFilter />
-      </div>
+      <section className="section">
+        <div className="container">
+          <h1 className="title is-3">Leitura - Um clone do Reddit</h1>
+          <CategoryFilter />
+        </div>
+      </section>
     )
 }
 

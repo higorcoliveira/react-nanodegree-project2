@@ -1,14 +1,28 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react'
 import PropTypes from 'prop-types'
 
 const RateElement = props => {
     const { thumbsUp, thumbsDown } = props
     return (
-      <div>
-        <button type="button" onClick={thumbsUp}>Gostei</button>
-        <button type="button" onClick={thumbsDown}>Não Gostei</button>
+      <div className="media level-right">
+        <button 
+          className="button" 
+          type="button" 
+          onClick={thumbsUp}
+        >          
+          <span className="icon is-small">
+            <i className="fa fa-thumbs-up" />
+          </span>
+        </button>
+        <button 
+          className="button" 
+          type="button" 
+          onClick={thumbsDown}
+        >          
+          <span className="icon is-small">
+            <i className="fa fa-thumbs-down" />
+          </span>
+        </button>
       </div>
     )
 }

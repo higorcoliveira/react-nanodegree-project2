@@ -19,7 +19,7 @@ class Dashboard extends Component {
       }
       
       return (
-        <div>
+        <div className="container">
           <PostList posts={posts} />
         </div>
       )

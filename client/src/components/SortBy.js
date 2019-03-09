@@ -8,28 +8,30 @@ const SortBy = props => {
     const { changeHandler, sortBy } = props
     
     return (
-      <div>
-        <small>Ordenar por:</small>
-        <input            
-          type="radio"            
-          id="radioDate"
-          value={BY_DATE}
-          onChange={changeHandler}
-          checked={sortBy === BY_DATE}
-        />
-        <label key="radioDate" htmlFor="radioDate">
-          <small>Data</small>
-        </label>
-        <input            
-          type="radio"            
-          id="radioScore"
-          value={BY_SCORE}
-          onChange={changeHandler}
-          checked={sortBy === BY_SCORE}
-        />
-        <label key="radioScore" htmlFor="radioScore">
-          <small>Votação</small>
-        </label>
+      <div className="level-right">        
+        <div className="control">
+          <small className="title is-6">Ordenar por:&emsp;</small>
+          <input            
+            type="radio"            
+            id="radioDate"
+            value={BY_DATE}
+            onChange={changeHandler}
+            checked={sortBy === BY_DATE}
+          />
+          <label className="radio" key="radioDate" htmlFor="radioDate">
+            <small className="title is-6">Data&emsp;</small>
+          </label>
+          <input            
+            type="radio"            
+            id="radioScore"
+            value={BY_SCORE}
+            onChange={changeHandler}
+            checked={sortBy === BY_SCORE}
+          />
+          <label className="radio" key="radioScore" htmlFor="radioScore">
+            <small className="title is-6">Votação</small>
+          </label>
+        </div>
       </div>
     )
 }

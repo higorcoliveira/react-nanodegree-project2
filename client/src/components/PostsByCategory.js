@@ -7,7 +7,7 @@ const PostsByCategory = props => {
     const { posts } = props
 
     return (
-      <div>
+      <div className="container">
         <PostList posts={posts} />
       </div>      
     )

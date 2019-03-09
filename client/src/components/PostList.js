@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import Post from './Post'
 import SortBy from './SortBy'
 import { BY_DATE } from '../util/constants'
@@ -29,14 +28,9 @@ class PostList extends Component {
           ? postsSorted.map(item => <Post key={item.id} id={item.id} />)
           : <div />
       return (
-        <div>
-          <div>
-            <Link to="/posts/new">Nova Postagem</Link>
-          </div>
-          <div>
-            <SortBy changeHandler={this.changeSortBy} sortBy={sortBy} />
-            <ul>{postsToRender}</ul>
-          </div>
+        <div className="container">                  
+          <SortBy changeHandler={this.changeSortBy} sortBy={sortBy} />
+          <ul>{postsToRender}</ul>
         </div>
       )
     }

@@ -22,7 +22,7 @@ class NewPost extends Component {
         return <Redirect to="/" />;
     }
     return (
-      <div>
+      <div className="container">
         <PostForm submitPost={this.createPost} isNew />
       </div>
     )

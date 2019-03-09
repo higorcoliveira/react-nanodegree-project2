@@ -9,20 +9,25 @@ const CategoryFilter = props => {
 
     const { byCategories } = props
     return (
-      <div>
-        <Link to="/">
-           Todas as Categorias&nbsp;
-        </Link>
-        {byCategories.map(category => (
-          <Link
-            to={`/${category.name}`}
-            key={category.name}
-            style={{width: '100px'}}
-          >
-            {capitalize(category.name)}&nbsp;
+      <nav className="level">
+        <div className="level-left">
+          <Link to="/" className="level-item">
+            Todas as Categorias&nbsp;
           </Link>
-        ))}
-      </div>
+          {byCategories.map(category => (
+            <Link
+              to={`/${category.name}`}
+              key={category.name}
+              className="level-item"
+            >
+              {capitalize(category.name)}&nbsp;
+            </Link>
+          ))}
+        </div>
+        <div className="level-right">
+          <Link to="/posts/new" className="button is-primary">Nova Postagem</Link>
+        </div>
+      </nav>  
     )
 }
 

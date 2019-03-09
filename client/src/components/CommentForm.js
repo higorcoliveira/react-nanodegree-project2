@@ -25,6 +25,7 @@ class CommentForm extends Component {
       timestamp: new Date().getTime(),
       voteScore: isNew ? 0 : comment.voteScore
     })
+    this.setState({ body: '', author: '' })
   }
 
   handleChange = (e, key) => {
@@ -42,28 +43,39 @@ class CommentForm extends Component {
     const { body, author } = this.state;
 
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.onSubmit}>
-          <div>
+          <div className="field">
             <textarea
+              className="textarea"
               id="body"
               value={body}
               maxLength={500}
               onChange={e => this.handleChange(e, "body")}              
-              placeholder="Escreva algo interessante..."
+              placeholder="Comente algo interessante..."
             />
           </div>
-          <div>
+          <div className="field">
             <input
+              className="input"
               type="text"            
               id="author"
               value={author}              
               onChange={e => this.handleChange(e, "author")}
-              placeholder="Autor..."
+              placeholder="Autor"
             />
           </div>
           <div>
-            <button type="submit" disabled={this.submitNotAllowed()}>Comentar</button>
+            <button
+              className="button is-success"
+              type="submit" 
+              disabled={this.submitNotAllowed()}
+            >
+              <span className="icon is-small">
+                <i className="fas fa-check" />
+              </span>
+              <span>Comentar</span>
+            </button>
           </div>
         </form>
       </div>

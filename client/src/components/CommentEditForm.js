@@ -27,14 +27,15 @@ class CommentEditForm extends Component {
     return (
       <div>
         <form onSubmit={this.editComment}>
-          <div>
+          <div className="field">
             <input 
+              className="input"
               type="text"              
               value={body}
               onChange={this.handleChange}
             />
             <div>
-              <button type="submit">Editar</button>
+              <button className="button is-info is-small" type="submit">Editar</button>
             </div>
           </div>
         </form>

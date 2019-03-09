@@ -58,11 +58,12 @@ class PostForm extends Component {
     const { category, title, body, author } = this.state;
     
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.onSubmit}>
           <CategoryForm checkedValue={category} handleChange={this.handleChange} />
-          <div>
+          <div className="field">
             <input
+              className="input"
               type="text"              
               id="title"
               value={title}              
@@ -70,8 +71,9 @@ class PostForm extends Component {
               placeholder="Título..."
             />
           </div>
-          <div>
+          <div className="field">
             <textarea
+              className="textarea"
               id="body"
               value={body}
               maxLength={500}
@@ -79,17 +81,32 @@ class PostForm extends Component {
               placeholder="Escreva algo interessante..."
             />
           </div>
-          <div>
-            <input
-              type="text"            
-              id="author"
-              value={author}              
-              onChange={e => this.handleChange(e, "author")}
-              placeholder="Autor..."
-            />
+          <div className="field">
+            <div className="control has-icons-left">
+              <input
+                className="input"
+                type="text"            
+                id="author"
+                value={author}              
+                onChange={e => this.handleChange(e, "author")}
+                placeholder="Autor..."
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-user" />
+              </span>
+            </div>
           </div>
           <div>
-            <button type="submit" disabled={this.submitNotAllowed()}>Postar</button>
+            <button 
+              className="button is-success" 
+              type="submit" 
+              disabled={this.submitNotAllowed()}
+            >
+              <span className="icon is-small">
+                <i className="fas fa-check" />
+              </span>
+              <span>Postar</span>
+            </button>
           </div>
         </form>
       </div>
