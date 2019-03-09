@@ -20,8 +20,9 @@ class EditPost extends Component {
   render() {
     let { post } = this.props
     const { redirect } = this.state
+
     if (redirect) {
-        return <Redirect to="/" />;
+        return <Redirect to="/" />
     }
 
     return (

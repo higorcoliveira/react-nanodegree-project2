@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import PostsByCategory from './components/PostsByCategory'
 import NewPost from './components/NewPost'
-import EditPost from './components/EditPost';
-import PostDetails from './components/PostDetails';
+import EditPost from './components/EditPost'
+import PostDetails from './components/PostDetails'
 
 const App = () => {
 

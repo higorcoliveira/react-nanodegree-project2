@@ -21,11 +21,11 @@ export function generateId() {
     return text
 }
 
-export const getSortedPosts = (posts, sortBy) => {
+export const getSortedElements = (elements, sortBy) => {
     if (sortBy === BY_DATE) {
-      return orderBy(posts, ['timestamp', 'voteScore'], ['desc', 'desc']);
+      return orderBy(elements, ['timestamp', 'voteScore'], ['desc', 'desc']);
     } else if (sortBy === BY_SCORE) {
-      return orderBy(posts, ['voteScore', 'timestamp'], ['desc', 'desc']);
+      return orderBy(elements, ['voteScore', 'timestamp'], ['desc', 'desc']);
     }
-    return posts;
+    return elements;
 }

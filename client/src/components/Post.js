@@ -3,10 +3,11 @@ import React, { Component } from 'react'
 import ShowMore from 'react-show-more'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import dateFormat from '../util/Util'
 import { handleDeletePost, handleRatePost } from '../actions/posts'
 import { THUMBS_UP, THUMBS_DOWN } from '../util/constants'
+import RateElement from './RateElement'
 
 class Post extends Component {
   
@@ -27,7 +28,7 @@ class Post extends Component {
 
   render() {
     const { post } = this.props;
-    const { id, title, author, body, timestamp, commentCount } = post
+    const { id, title, author, body, timestamp, commentCount, voteScore } = post
 
     return (
       <li>
@@ -52,11 +53,11 @@ class Post extends Component {
           <div>
             <small>Data da publicação: {dateFormat(timestamp)}</small>
             <div>
-              <small>{commentCount} commentário(s)</small>
+              <small>{commentCount} commentário(s) &nbsp;</small>
+              <small>{voteScore} voto(s)</small>
             </div>
           </div>
-          <button type="button" onClick={this.thumbsUp}>Gostei</button>
-          <button type="button" onClick={this.thumbsDown}>Não Gostei</button>
+          <RateElement thumbsUp={this.thumbsUp} thumbsDown={this.thumbsDown} />
         </div>
       </li>
     )

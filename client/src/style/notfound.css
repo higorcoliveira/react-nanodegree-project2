@@ -1,0 +1,25 @@
+.errorBody {
+    position: 'absolute';
+    top: '0';
+    left: '0';
+    width: '200px';
+    height: '200px';
+    background: '#121212';
+    display: 'flex';  
+}
+  
+.errorBg {
+    position: 'absolute';
+    top: '0';
+    left: '0';
+    width: '200px';
+    height: '200px';   
+}
+  
+.errorMessage {
+    height: '100px';
+    color: 'white';
+    width: '100%';
+    display: 'flex';  
+    content: URL('https://imgur.com/ehz2DoA')
+}

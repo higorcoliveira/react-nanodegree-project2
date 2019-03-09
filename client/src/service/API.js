@@ -1,6 +1,6 @@
 const api = "http://localhost:3001"
 // alterar o valor do token para reiniciar os dados do backend
-let token = "higorcoliveira:555113351AAW24"
+let token = "higorcoliveira:555113aaa351AAW24"
 
 const headers = {
     'Accept': 'application/json',
@@ -81,7 +81,7 @@ export const addComment = (comment) => {
     return fetch(`${api}/comments`, {
             method: 'POST',
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ comment })
+            body: JSON.stringify(comment)
     }).then(res => res.json())    
 }
 
@@ -94,7 +94,7 @@ export const rateComment = (commentId, rate) => {
     return fetch(`${api}/comments/${commentId}`, {
             method: 'POST',
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ rate })
+            body: JSON.stringify(rate)
     }).then(res => res.json())    
 }
 
@@ -102,7 +102,7 @@ export const editComment = (comment) => {
     return fetch(`${api}/comments/${comment.id}`, {
             method: 'PUT',
             headers: { ...headers, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ comment })
+            body: JSON.stringify(comment)
     }).then(res => res.json())    
 }
 
