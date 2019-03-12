@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import PostsByCategory from './components/PostsByCategory'
@@ -21,8 +20,8 @@ const App = () => {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/:category" component={PostsByCategory} />
             <Route exact path="/posts/new" component={NewPost} />
-            <Route exact path="/posts/:postId/edit" component={EditPost} />
-            <Route exact path="/posts/:postId/view" component={PostDetails} />
+            <Route exact path="/:category/:postId/edit" component={EditPost} />
+            <Route exact path="/:category/:postId" component={PostDetails} />
             <Route exact path="/error/notfound" component={NotFound} />
           </Switch>
         </section>
@@ -30,4 +29,4 @@ const App = () => {
     )
 }
 
-export default connect()(App)
+export default App

@@ -25,7 +25,7 @@ class PostList extends Component {
       const { sortBy } = this.state
       const postsSorted = getSortedElements(posts, sortBy)
       const postsToRender = postsSorted.length > 0 
-          ? postsSorted.map(item => <Post key={item.id} id={item.id} />)
+          ? postsSorted.map(item => <Post key={item.id} post={item} />)
           : <div />
       return (
         <div className="container">                  

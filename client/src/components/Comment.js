@@ -6,6 +6,7 @@ import dateFormat from '../util/Util'
 import RateElement from './RateElement'
 import CommentEditForm from './CommentEditForm'
 import { THUMBS_UP, THUMBS_DOWN } from '../util/constants'
+import { handleCommentCounter } from '../actions/posts'
 import { handleRateComment, handleDeleteComment, handleEditComment } 
   from '../actions/comments'
 
@@ -26,8 +27,10 @@ class Comment extends Component {
   }
     
   deleteComment = () => {
-    const { dispatch, comment } = this.props
+    const { dispatch, comment, post } = this.props
+    post.commentCount -= 1
     dispatch(handleDeleteComment(comment.id))
+    dispatch(handleCommentCounter(post))
   }
 
   editComment = (newBody) => {
@@ -92,14 +95,10 @@ class Comment extends Component {
   }
 }
 
-const mapStateToProps = ({ comments }, { id }) => {
-    const [comment] = comments.data.filter(comment => comment.id === id)
-    return { comment }
-}
-
 Comment.propTypes = {
-    comment: PropTypes.instanceOf(Object).isRequired,
-    dispatch: PropTypes.func.isRequired
+  post: PropTypes.instanceOf(Object).isRequired,
+  comment: PropTypes.instanceOf(Object).isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps)(Comment)
+export default connect()(Comment)

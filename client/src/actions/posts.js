@@ -32,6 +32,19 @@ function deletePost(post) {
     }
 }
 
+export function handleCommentCounter(post) {
+    return (dispatch) => {   
+        return dispatch(editPost(post))
+    }
+}
+
+export function handleGetPosts() {
+    return (dispatch) => {
+        return API.getAllPosts()
+          .then((posts) => dispatch(getPosts(posts)))
+    }
+}
+
 export function handleCreatePost(post) {
     return (dispatch) => {
         return API.addPost(post)

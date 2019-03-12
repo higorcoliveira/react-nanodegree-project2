@@ -29,14 +29,14 @@ class Post extends Component {
 
   render() {    
     const { post } = this.props;
-    const { id, title, author, body, timestamp, commentCount, voteScore } = post
+    const { id, category, title, author, body, timestamp, commentCount, voteScore } = post
 
     return (
       <li>
         <div className="card">
           <div>
             <div className="subtitle is-5 card-header-title card-header-icon">
-              <Link to={`/posts/${id}/view`}>
+              <Link to={`/${category}/${id}`}>
                 { title }
               </Link>            
             </div>
@@ -50,7 +50,7 @@ class Post extends Component {
                 <i className="fas fa-times" />
               </span>    
             </button>
-            <Link className="button is-info" to={`/posts/${id}/edit`}>
+            <Link className="button is-info" to={`/${category}/${id}/edit`}>
               Editar
             </Link>            
           </div>
@@ -71,14 +71,9 @@ class Post extends Component {
   }
 }
 
-const mapStateToProps = ({ posts }, { id }) => {
-    const [post] = posts.data.filter(post => post.id === id)
-    return { post }
-}
-
 Post.propTypes = {
     post: PropTypes.instanceOf(Object).isRequired,
     dispatch: PropTypes.func.isRequired
 }
 
-export default connect(mapStateToProps)(Post)
+export default connect()(Post)

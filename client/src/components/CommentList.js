@@ -6,6 +6,7 @@ import SortBy from './SortBy'
 import { getSortedElements } from '../util/Util'
 
 class CommentList extends Component {
+  
   constructor(props) {
     super(props)
     this.state = {
@@ -20,11 +21,11 @@ class CommentList extends Component {
   }
 
   render() {
-    const { comments } = this.props
+    const { post, comments } = this.props
     const { sortBy } = this.state
     const commentsSorted = getSortedElements(comments, sortBy)
     const commentsSortedToRender = commentsSorted.length > 0 
-        ? commentsSorted.map(item => <Comment key={item.id} id={item.id} />)
+        ? commentsSorted.map(item => <Comment key={item.id} post={post} comment={item} />)
         : <div>Ninguém comentou ainda...</div>
 
     return (
@@ -37,7 +38,8 @@ class CommentList extends Component {
 }
 
 CommentList.propTypes = {
-    comments: PropTypes.instanceOf(Array).isRequired
+  post: PropTypes.instanceOf(Object).isRequired,
+  comments: PropTypes.instanceOf(Array).isRequired
 }
 
 
