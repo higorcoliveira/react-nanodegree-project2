@@ -12,9 +12,7 @@ const App = () => {
 
     return (
       <BrowserRouter>        
-        <section className="section">
-          {/* para o componente notFound funcionar é preciso resolver o problema do estado 
-            do redux estar sendo zerado quando é dado refresh na página */}
+        <section className="section">          
           <Header />
           <Switch>
             <Route exact path="/" component={Dashboard} />

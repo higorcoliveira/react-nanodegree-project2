@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Post from './Post'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
+import NotFound from './NotFound'
 import { handleGetCommentsByPostId, handleCreateComment } from '../actions/comments'
 import { handleCommentCounter, handleGetPostById } from '../actions/posts'
 
@@ -11,8 +12,8 @@ class PostDetails extends Component {
 
   componentDidMount() {
     const { dispatch, match } = this.props
-    dispatch(handleGetCommentsByPostId(match.params.postId))
     dispatch(handleGetPostById(match.params.postId))
+    dispatch(handleGetCommentsByPostId(match.params.postId))
   }
 
   addComment = comment => {
@@ -31,9 +32,13 @@ class PostDetails extends Component {
   render() {
     const { post, comments } = this.props
 
+    if (post.length === 0) {
+      return (<NotFound />)
+    }
+
     return (
       <div className="container">
-        <Post key={post.id} post={post} />
+        { post && post.id && <Post key={post.id} post={post} /> }
         <br />
         <CommentForm submitComment={this.addComment} isNew />
         <br />
@@ -45,7 +50,12 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({ posts, comments }, ownProps) => {
   const { match } = ownProps
-  const [post] = posts.data.filter(post => post.id === match.params.postId)
+  let post = []
+  if (posts.status === 'loaded' && posts.data.length > 0) {
+    [post] = posts.data.filter(post => post.id === match.params.postId)
+  } else {
+    post = posts.data
+  }
   return {
     post: post,
     comments: comments.data

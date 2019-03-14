@@ -8,17 +8,15 @@ const initialState = {
 
 export default function posts (state = initialState, action) {
     switch(action.type) {
-        case GET_POST_BY_ID: {
-            const { post } = action            
-            const existingPosts = state.data
+        case GET_POST_BY_ID: {            
+            const { post } = action
+            const newPosts = state.data
+            if (post.id !== undefined)
+                newPosts.push(post)
             return {
                 ...state,
-                data: existingPosts.map(item => {
-                    if (item.id === post.id) {
-                        return { ...item, ...post}
-                    }
-                    return item
-                })                        
+                status: 'loaded',
+                data: newPosts
             }
         }
         case GET_POSTS:
