@@ -1,4 +1,4 @@
-import { GET_POSTS, CREATE_POST, EDIT_POST, DELETE_POST } 
+import { GET_POSTS, CREATE_POST, EDIT_POST, DELETE_POST, GET_POST_BY_ID } 
     from '../actions/constants'
 
 const initialState = {
@@ -8,6 +8,19 @@ const initialState = {
 
 export default function posts (state = initialState, action) {
     switch(action.type) {
+        case GET_POST_BY_ID: {
+            const { post } = action            
+            const existingPosts = state.data
+            return {
+                ...state,
+                data: existingPosts.map(item => {
+                    if (item.id === post.id) {
+                        return { ...item, ...post}
+                    }
+                    return item
+                })                        
+            }
+        }
         case GET_POSTS:
             return {
                 ...state,

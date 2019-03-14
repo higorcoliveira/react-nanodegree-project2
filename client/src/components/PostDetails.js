@@ -5,14 +5,14 @@ import Post from './Post'
 import CommentList from './CommentList'
 import CommentForm from './CommentForm'
 import { handleGetCommentsByPostId, handleCreateComment } from '../actions/comments'
-import { handleCommentCounter } from '../actions/posts'
+import { handleCommentCounter, handleGetPostById } from '../actions/posts'
 
 class PostDetails extends Component {
 
   componentDidMount() {
     const { dispatch, match } = this.props
     dispatch(handleGetCommentsByPostId(match.params.postId))
-    // dispatch(handleGetPosts())
+    dispatch(handleGetPostById(match.params.postId))
   }
 
   addComment = comment => {

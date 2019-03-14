@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { GET_POSTS, CREATE_POST, 
-        EDIT_POST, DELETE_POST }
+        EDIT_POST, DELETE_POST, GET_POST_BY_ID }
     from './constants'
 import * as API from '../service/API'
 
@@ -8,6 +8,13 @@ export function getPosts(posts) {
     return {
         type: GET_POSTS,
         posts: posts
+    }
+}
+
+function getPostById(post) {
+    return {
+        type: GET_POST_BY_ID,
+        post
     }
 }
 
@@ -29,6 +36,13 @@ function deletePost(post) {
     return {
         type: DELETE_POST,
         post
+    }
+}
+
+export function handleGetPostById(postId) {
+    return (dispatch) => {
+        return API.getPost(postId)
+          .then((post) => dispatch(getPostById(post)))
     }
 }
 
